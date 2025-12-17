@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>My Website</title>
+        <style>
+            header{
+                display : flex;
+                justify-content: space-between;
+                position: relative;
+                padding: 10px;
+            }
+            .search-box{
+                top: 15px;
+                left : 30%;
+                position : absolute;
+                width: 400px;
+                height: 45px;
+                border-radius: 30px;
+                border-color: black;
+                padding-left: 40px;
+            }
+            .log-in{
+                position: absolute;
+                right: 5%;
+                top: 15px;
+                padding: 5px 10px;
+                border-radius: 5px;
+                border: none;
+                background-color: #007BFF;
+                color: white;
+            }
+            .logo{
+                position: absolute;
+                left: 5%;
+                top: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h4 class = 'logo'>My Tube</h4>
+            <input type = 'text' class = 'search-box' placeholder="What are you looking for?">
+            <button class = 'log-in'>Log In</button>
+        </header>
+    </body>
+</html>
