@@ -147,6 +147,19 @@ header {
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(255,0,0,0.5);
 }
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0
+}
+.hero:hover .hero-video {
+    opacity: 1;
+}
 
 /* ================= VIDEO SECTION ================= */
 

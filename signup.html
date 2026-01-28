@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signupstyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="signup-container">
+
+    <div class="form-section">
+        <h1>Create an account</h1>
+        <p class="login-text">
+            Already have an account?
+            <a href="login.html">Log in</a>
+        </p>
+
+        <form action="usersignup.php" method="post">
+            <div class="row">
+                <input type="text" placeholder="First name" name="firstname" required>
+                <input type="text" placeholder="Last name" name="lastname" required>
+            </div>
+
+            <input type="email" placeholder="Email" name="email" required>
+            <input type="password" placeholder="Password" name="password" required>
+
+            <label class="checkbox">
+                <input type="checkbox" required>
+                I agree to the <a href="#">Terms & Conditions</a>
+            </label>
+
+            <button type="submit" class="primary-btn">
+                Create account
+            </button>
+
+            <div class="divider">Or register with</div>
+
+            <div class="social-buttons">
+                <button type="button" class="google">Google</button>
+                <button type="button" class="apple">Apple</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

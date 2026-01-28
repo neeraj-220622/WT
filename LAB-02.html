@@ -27,11 +27,21 @@
             <input type="text" class="search-box" placeholder="">
         </div>
 
-        <button class="log-in"><i class="fa fa-user"></i> Log In</button>
+        <button onclick = "goToLogin()" class="log-in"><i class="fa fa-user"></i> Sign Up</button>
+        <script>
+            function goToLogin() {
+              window.location.href = "signup.html";
+            }
+        </script>
+
     </header>
+
 
     <!-- HERO SECTION -->
     <section class="hero">
+        <<video class = 'hero-video'>
+            <source src="c:\Users\bobba\Downloads\THE_BATMAN_Main_Trailer_720p.mp4" type="video/mp4">
+        </video>>
         <div class="hero-content">
             <p>2022 March . ★ 7.8/10</p>
             <h1>THE BATMAN</h1>
@@ -47,6 +57,16 @@
             <button class="play-btn">▶ Play Now</button>
             <button class="later-btn">+ Watch Later</button>
         </div>
+        <script>
+            const video = document.querySelector('.hero-video');
+            const hero = document.querySelector('.hero');
+            hero.addEventListener('mousemove', () => {
+                video.play();
+            });
+            hero.addEventListener('mouseleave', () => {
+                video.pause();
+            });
+        </script>
     </section>
     </section>
 
@@ -132,10 +152,10 @@
 
     <div class="contact-wrapper">
 
-        <form class="contact-form">
-            <input class="form-control" type="text" placeholder="NAME" required>
-            <input class="form-control" type="email" placeholder="EMAIL" required>
-            <textarea class="form-control" rows="6" placeholder="MESSAGE"></textarea>
+        <form class="contact-form" action="database.php" method="post">
+            <input class="form-control" type="text" placeholder="NAME" name="name" required>
+            <input class="form-control" type="email" placeholder="EMAIL" name="email" required>
+            <textarea class="form-control" rows="6" placeholder="MESSAGE" name="message"></textarea>
             <button class="send-button" type="submit">SEND</button>
         </form>
 
@@ -172,6 +192,21 @@
         </nav>
         <p>Copyright © 2020-2025 MyTube.com. All rights reserved.</p>
     </footer>
-
+    <script>
+        let name = prompt("Enter your name:");
+        function greetUser() {
+            alert("Welcome to MyTube, " + name + "!");
+        }
+        greetUser();
+        let age = ()=>{
+            let userAge = prompt("Enter your age:");
+            if(userAge<18){
+                alert("You are not eligible to access this site.");
+            } else {
+                alert("Enjoy streaming on MyTube!");
+            }
+        }
+        age();
+    </script>
 </body>
 </html>
