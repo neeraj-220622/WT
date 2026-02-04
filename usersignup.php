@@ -12,14 +12,29 @@ echo "Database connected successfully";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
+    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    echo "<br>Received data: First Name = $firstname, Last Name = $lastname, Email = $email, Password = $password<br>";
-    $sql = "INSERT INTO user_details VALUES ('$firstname', '$lastname', '$email', '$password')";
-    if (mysqli_query($conn, $sql)) {
-        echo "New record created successfully";
+    $username = strtolower($username);
+    $username = str_replace(' ', '', $username);
+    echo "<br>Received data: First Name = $firstname, Last Name = $lastname, Username = $username, Email = $email, Password = $password<br>";
+    $query = "SELECT * FROM user_details WHERE username = '{$username}'";
+    $q = "SELECT * FROM user_details WHERE email = '{$email}'";
+    if (mysqli_num_rows(mysqli_query($conn, $query)) > 0 || mysqli_num_rows(mysqli_query($conn, $q)) > 0) {
+        echo "Username or Email already exists. Please choose a different one.";
+    } elseif (strlen($password) < 8) {
+        echo "Password must be at least 8 characters long.";
+    } elseif (!str_contains($email, '@')) {
+        echo "Invalid email address.";
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        $sql = "INSERT INTO user_details (FName, LName, username, Email, Password) 
+                VALUES ('$firstname', '$lastname', '$username', '$email', '$password')";
+        if (mysqli_query($conn, $sql)) {
+            echo "New record created successfully";
+            header("Location: login.html");
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
     }
     mysqli_close($conn);
 }

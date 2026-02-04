@@ -13,15 +13,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
-
+    $username = strtolower($username);
+    $username = str_replace(' ', '', $username);
     $sql = "SELECT * FROM user_details 
-            WHERE FName = '$username' 
+            WHERE username = '$username' 
             AND Password = '$password'";
 
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) == 1) {
         echo "Login successful";
+        header("Location: LAB-02.html");
     } else {
         echo "Invalid username or password";
     }
