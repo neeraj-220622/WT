@@ -20,5 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
+
+    $File_name = $_FILES["fileToUpload"]["name"];
+    $temp_name = $_FILES["fileToUpload"]["tmp_name"];
+    $folder = "uploads/";
+    move_uploaded_file($temp_name, $folder . $File_name);
+    echo "File uploaded successfully: " . $File_name;
+    echo "<br><a href = 'Download.php?file=$File_name'>Download $File_name</a>";
+    echo "<br><a href = 'Deletion.php?file=$File_name'>Delete $File_name</a>";
+    echo "<br><a href = 'file_operations.php'>File Operations</a>";
     mysqli_close($conn);
 }

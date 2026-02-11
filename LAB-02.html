@@ -150,10 +150,11 @@
 
     <div class="contact-wrapper">
 
-        <form class="contact-form" action="database.php" method="post">
+        <form class="contact-form" action="database.php" method="post" enctype="multipart/form-data">
             <input class="form-control" type="text" placeholder="NAME" name="name" required>
             <input class="form-control" type="email" placeholder="EMAIL" name="email" required>
             <textarea class="form-control" rows="6" placeholder="MESSAGE" name="message"></textarea>
+            <input class="form-control" type="file" name="fileToUpload">
             <button class="send-button" type="submit">SEND</button>
         </form>
 
