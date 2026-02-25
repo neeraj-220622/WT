@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost";
+/*$servername = "localhost";
 $username = "root";
 $password_db = "";
 $dbname = "testdb";
@@ -29,4 +29,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-mysqli_close($conn);
+mysqli_close($conn);*/
+session_start();
+
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/config/db.php';
+$Client = new MongoDB\Client("mongodb://localhost:27017");
+$db = $Client->MyTube;
+$user = $db->user_details;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $username = strtolower($username);
+    $username = str_replace(' ', '', $username);
+    echo $password;
+    if ($user->findOne(['username' => $username]) && password_verify($password, $user->findOne(['username' => $username])['Password'])) {
+        echo "Login successful";
+        $_SESSION['user_id'] = (string)$username;
+        header("Location: LAB-02.php");
+    } else {
+        echo "Invalid username or password";
+    }
+}

@@ -1,0 +1,257 @@
+<?php
+session_start();
+?>
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>MyTube- Online Video Streaming</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="margin: 0;">
+
+    <!-- HEADER -->
+    <section class="img-background">
+        <header>
+            <h2 class="logo">
+                My Tube
+            </h2>
+
+            <nav class="nav-bar">
+                <a href="#">Movies</a>
+                <a href="#">TV Shows</a>
+                <a href="#">Sports</a>
+                <a href="#">Kids</a>
+                <a href="#">Anime</a>
+            </nav>
+
+            <div class="search-container">
+                <i class="fa fa-search search-icon"></i>
+                <input type="text" class="search-box" placeholder="">
+            </div>
+
+            <?php if (isset($_SESSION['user_id'])): ?>
+
+                <select class="log-in" onchange="handleProfileMenu(this.value)">
+                    <option><?php echo $_SESSION['user_id'] ?></option>
+                    <option value="profile">My Profile</option>
+                    <option value="update">Update Profile</option>
+                    <option value="logout">Sign Out</option>
+                </select>
+
+                <script>
+                    function handleProfileMenu(value) {
+                        if (value === "profile") {
+                            window.location.href = "profile.php";
+                        } else if (value === "update") {
+                            window.location.href = "updateprofile.php";
+                        } else if (value === "logout") {
+                            window.location.href = "logout.php";
+                        }
+                    }
+                </script>
+
+            <?php else: ?>
+
+                <button onclick="goToSignup()" class="log-in">
+                    <i class="fa fa-user"></i> Sign Up
+                </button>
+
+                <script>
+                    function goToSignup() {
+                        window.location.href = "signup.html";
+                    }
+                </script>
+
+            <?php endif; ?>
+        </header>
+
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <<video class='hero-video'>
+                <source src="c:\Users\bobba\Downloads\THE_BATMAN_Main_Trailer_720p.mp4" type="video/mp4">
+                </video>>
+                <div class="hero-content">
+                    <p>2022 March . ★ 7.8/10</p>
+                    <h1>THE BATMAN</h1>
+
+                    <p>
+                        centers on Bruce Wayne's dual identity<br>
+                        confronting Gotham's crime/corruption through vigilantism,<br>
+                        often involving a major villain (like The Riddler, Joker, Bane),
+                        exploring themes of trauma, justice, and the blurred lines between
+                        hero and monster.
+                    </p>
+
+                    <button class="play-btn">▶ Play Now</button>
+                    <button class="later-btn">+ Watch Later</button>
+                </div>
+                <script>
+                    const video = document.querySelector('.hero-video');
+                    const hero = document.querySelector('.hero');
+                    hero.addEventListener('mousemove', () => {
+                        video.play();
+                    });
+                    hero.addEventListener('mouseleave', () => {
+                        video.pause();
+                    });
+                </script>
+        </section>
+    </section>
+
+    <!-- VIDEO SECTION -->
+    <section class="video-section">
+
+        <!-- POPULAR RIGHT NOW -->
+        <h2 class="section-title">Popular right now</h2>
+
+        <div class="video">
+
+            <div class="movies">
+                <img src="https://m.media-amazon.com/images/M/MV5BMzNhNTE0NWQtN2E1Ny00NjcwLTg1YTctMGY1NmMwODJmY2NmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg">
+                <p class="movie-name">Far from Home<br>2022 March . ★7.8/10</p>
+            </div>
+
+            <div class="movies">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiis_xjmEqBxaAjKRQF3z6Al8ShiHl8CvTlg&s">
+                <p class="movie-name">Top Gun<br>2022 March . ★7.8/10</p>
+            </div>
+
+            <div class="movies">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAORn2QCTSgeqnuHYdJgTKX_KrWX_tkzTF1Q&s">
+                <p class="movie-name">Shawshank Redemption<br>2022 March . ★7.8/10</p>
+            </div>
+
+            <div class="movies">
+                <img src="https://m.media-amazon.com/images/M/MV5BYWQ4YmNjYjEtOWE1Zi00Y2U4LWI4NTAtMTU0MjkxNWQ1ZmJiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg">
+                <p class="movie-name">Gladiator<br>2022 March . ★7.8/10</p>
+            </div>
+
+            <div class="movies">
+                <img src="https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_.jpg">
+                <p class="movie-name">The Godfather<br>2022 March . ★7.8/10</p>
+            </div>
+
+            <div class="movies">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwjvtARVQAFZvjgby4i1ev7I2h0OgHcG8YoQ&s">
+                <p class="movie-name">Lord of the Rings<br>2022 March . ★7.8/10</p>
+            </div>
+
+            <div class="movies">
+                <img src="https://m.media-amazon.com/images/M/MV5BOTgyOGQ1NDItNGU3Ny00MjU3LTg2YWEtNmEyYjBiMjI1Y2M5XkEyXkFqcGc@._V1_.jpg">
+                <p class="movie-name">The Fight Club<br>2022 March . ★7.8/10</p>
+            </div>
+
+        </div>
+
+        <!-- AUDIO & VIDEO -->
+        <audio controls class="audio-player" muted>
+            <source src="c:\Users\bobba\Downloads\Avatar Fire and Ash - Movie Review - Dan Murrell.mp3" type="audio/mp3">
+        </audio>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Nt9L1jCKGnE?si=mGN06xoDORJe0XYE&amp;start=17" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        <!-- IFRAME -->
+        <iframe width="100%" height="400"
+            src="https://www.thapatechnical.com"
+            title="iframe example">
+        </iframe>
+
+        <!-- TRENDING TABLE -->
+        <h2 class="section-title">Top Trending Movies</h2>
+
+        <table>
+            <tr>
+                <th>Trending Movies</th>
+                <th># in the globe</th>
+            </tr>
+            <tr>
+                <td>The Batman</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Far from Home</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Top Gun</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Shawshank Redemption</td>
+                <td>4</td>
+            </tr>
+        </table>
+
+    </section>
+
+    <!-- CONTACT US -->
+    <section id="contact">
+        <h1 class="section-header">Contact Us</h1>
+
+        <div class="contact-wrapper">
+
+            <form class="contact-form" action="database.php" method="post" enctype="multipart/form-data">
+                <input class="form-control" type="text" placeholder="NAME" name="name" required>
+                <input class="form-control" type="email" placeholder="EMAIL" name="email" required>
+                <textarea class="form-control" rows="6" placeholder="MESSAGE" name="message"></textarea>
+                <input class="form-control" type="file" name="fileToUpload">
+                <button class="send-button" type="submit">SEND</button>
+            </form>
+
+            <div class="direct-contact-container">
+                <ul class="contact-list">
+                    <li>Visakhapatnam City, Andra Pradesh</li>
+                    <li>
+                        <a href="tel:7816039944">7816039944</a>
+                    </li>
+                    <li>
+                        <a href="mailto:bobbadhiniraj2006@gmail.com">bobbadhiniraj2006@gmail.com</a>
+                    </li>
+                </ul>
+
+                <ul class="social-media-list">
+                    <li><i class="fab fa-github"></i>GitHub</li>
+                    <li><i class="fab fa-twitter"></i>Twitter</li>
+                    <li><i class="fab fa-instagram"></i>Instagram</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <h2>MyTube.com</h2>
+        <nav>
+            <a href="#">Movies</a>
+            <a href="#">TV Shows</a>
+            <a href="#">Sports</a>
+            <a href="#">Kids</a>
+            <a href="#">Anime</a>
+        </nav>
+        <p>Copyright © 2020-2025 MyTube.com. All rights reserved.</p>
+    </footer>
+    <script>
+        let name = prompt("Enter your name:");
+
+        function greetUser() {
+            alert("Welcome to MyTube, " + name + "!");
+        }
+        greetUser();
+        let age = () => {
+            let userAge = prompt("Enter your age:");
+            if (userAge < 18) {
+                alert("You are not eligible to access this site.");
+            } else {
+                alert("Enjoy streaming on MyTube!");
+            }
+        }
+        age();
+    </script>
+</body>
+
+</html>
